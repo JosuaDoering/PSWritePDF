@@ -7,6 +7,7 @@
         [ValidateScript( { & $Script:PDFColorValidation } )][string[]] $FontColor,
         [nullable[bool][]] $FontBold,
         [int] $FontSize,
+        [ValidateScript( { & $Script:PDFColorValidation } )][string[]] $BackgroundColor,
         [string] $TextAlignment,
         [nullable[float]] $MarginTop,
         [nullable[float]] $MarginBottom,
@@ -53,6 +54,14 @@
                 if ($DefaultColor) {
                     $ConvertedColor = Get-PDFConstantColor -Color $DefaultColor
                     $PDFText = $PDFText.SetFontColor($ConvertedColor)
+                }
+            }
+        }
+        if ($BackgroundColor) {
+            if ($null -ne $BackgroundColor[$i]) {
+                if ($BackgroundColor[$i]) {
+                    $ConvertedColor = Get-PDFConstantColor -Color $BackgroundColor[$i]
+                    $PDFText = $PDFText.SetBackgroundColor($ConvertedColor)
                 }
             }
         }

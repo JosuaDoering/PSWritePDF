@@ -17,7 +17,7 @@
     [iText.layout.element.Table] $Table = [iText.Layout.Element.Table]::new($ColumnNames.Count)
     $Table = $Table.UseAllAvailableWidth()
 
-    foreach ($Column in $ColumnNames) {
+    foreach ($Column in $ColumnNames) { 
         $Splat = @{
             Text = $Column
             #Font      = $Font

@@ -6,6 +6,7 @@
         [ValidateScript( { & $Script:PDFColorValidation } )][string[]] $FontColor,
         [nullable[bool][]] $FontBold,
         [int] $FontSize,
+        [ValidateScript( { & $Script:PDFColorValidation } )][string[]] $BackgroundColor,
         [ValidateScript( { & $Script:PDFTextAlignmentValidation } )][string] $TextAlignment,
         [nullable[float]] $MarginTop = 2,
         [nullable[float]] $MarginBottom = 2,
@@ -27,6 +28,9 @@
     }
     if ($FontSize) {
         $Splat['FontSize'] = $FontSize
+    }
+    if ($BackgroundColor) {
+        $Splat['BackgroundColor'] = $BackgroundColor
     }
     if ($TextAlignment) {
         $Splat['TextAlignment'] = $TextAlignment
